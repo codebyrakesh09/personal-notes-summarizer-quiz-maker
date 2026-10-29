@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Turn your study notes into a clear summary or a practice quiz."
+    />
+    <title>Study Buddy</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <p class="eyebrow">YOUR PERSONAL STUDY SPACE</p>
+        <h1>Study Buddy <span aria-hidden="true">✦</span></h1>
+        <p class="intro">
+          Bring your notes. We’ll help you understand and remember them.
+        </p>
+      </header>
+
+      <section class="study-card" aria-labelledby="notes-heading">
+        <label id="notes-heading" for="notes">Your study notes</label>
+        <p class="field-hint">Paste at least 30 characters to get started.</p>
+        <div class="upload-row">
+          <label class="button button-secondary upload-button" for="notes-file">
+            Upload a .txt or PDF
+          </label>
+          <input
+            id="notes-file"
+            class="file-input"
+            type="file"
+            accept=".txt,.pdf,text/plain,application/pdf"
+            aria-describedby="upload-hint"
+          />
+          <span id="upload-hint" class="field-hint">Up to 5 MB. Text is extracted into the notes box.</span>
+        </div>
+        <textarea
+          id="notes"
+          name="notes"
+          maxlength="20000"
+          placeholder="For example: Photosynthesis is the process by which green plants use sunlight to make food..."
+        ></textarea>
+        <div class="form-footer">
+          <span id="character-count" aria-live="polite">0 / 20,000</span>
+          <div class="actions">
+            <button class="button button-secondary" data-mode="summary" type="button">
+              Summarize
+            </button>
+            <button class="button button-primary" data-mode="quiz" type="button">
+              Make a quiz
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="result-card" class="result-card" aria-labelledby="result-title" hidden>
+        <div class="result-heading">
+          <p class="eyebrow">YOUR STUDY MATERIAL</p>
+          <h2 id="result-title">Result</h2>
+        </div>
+        <div id="result" class="result-content"></div>
+      </section>
+    </main>
+  </body>
+</html>
